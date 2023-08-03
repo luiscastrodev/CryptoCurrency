@@ -22,6 +22,8 @@ class GetCoinsUseCase @Inject constructor(
             emit(Resource.Error<List<Coin>>(e.localizedMessage ?: "An unexpected error occured"))
         } catch(e: IOException) {
             emit(Resource.Error<List<Coin>>("Couldn't reach server. Check your internet connection."))
+        }catch (ex : Exception){
+            val res  = ex;
         }
     }
 }
